@@ -6,11 +6,11 @@ execute:
   echo: true
 
 book:
-  title: "YOUR PROJECT TITLE"
+  title: "EDAV_final_group29"
   author:
-    - AUTHOR1 (UNI1)
-    - AUTHOR2 (UNI2)
-  repo-url: https://github.com/YOUR_GITHUB_ACCOUNT/REPO_NAME
+    - Zhiyi Zhang (zz3274)
+    - Jiujiu Zhou (jz3869)
+  repo-url: https://zhiyi-z2233.github.io/EDAV_final_group29/
   date: today
   page-footer:
     right: |
