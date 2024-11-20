@@ -24,4 +24,8 @@ To explore customer satisfaction, we use data from the [American Customer Satisf
 
 ## Missing value analysis
 
+For the first dataset, the process includes:
+1. Remove key feature missing including restaurant names, inspect date, and grade.
+2. Change categorical variables into factors for visualization.
+(3. Create additional features for analysis.)
 
