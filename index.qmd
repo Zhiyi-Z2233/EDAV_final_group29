@@ -3,3 +3,5 @@
 For our final project, we will conduct exploratory data analysis for restaurants in New York City, a topic of great interest to both residents and visitors. Specifically, we will explore various aspects of the restaurant industry, including sales, profitability, safety standards, and customer satisfaction levels.
 
 To achieve this, we have acquired a large data set detailing the inspection of over 250,000 restaurants in NYC. We will leverage R for data analysis and visualization, utilizing relevant packages to uncover trends and patterns. Through this analysis, we hope to gain meaningful insights into the factors that drive success and challenges within New York’s vibrant restaurant scene.
+
+test
