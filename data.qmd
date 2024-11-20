@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Data
 For this project, we use three datasets that provide insights into different aspects of restaurant and food-related data.
 
@@ -29,4 +34,46 @@ For the first dataset, the process includes:
 1. Remove key feature missing including restaurant names, inspect date, and grade.
 2. Change categorical variables into factors for visualization.
 (3. Create additional features for analysis.)
+
+First, read the data.
+```{r}
+library(tidyverse)
+library(ggrepel)
+restaurant<-read_csv("DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv")
+```
+
+Get a general understanding of the data.
+```{r}
+glimpse(restaurant)
+summary(restaurant)
+colnames(restaurant)
+```
+
+Check missing data.
+Remove key feature missing including restaurant names, inspection date, and grade.
+```{r}
+restaurant |> summarise(across(everything(), ~ sum(is.na(.))))
+
+restaurant_clean <- restaurant |>
+  drop_na(DBA, `INSPECTION DATE`, GRADE)
+```
+
+```{r}
+grade_distribution <- restaurant_clean |>
+  count(GRADE, sort = TRUE)
+
+# Display the grade distribution
+grade_distribution
+
+# Visualize the grade distribution
+restaurant_clean |>
+  ggplot(aes(x = GRADE)) +
+  geom_bar() +
+  labs(
+    title = "Distribution of Grades",
+    x = "Grade",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
 
