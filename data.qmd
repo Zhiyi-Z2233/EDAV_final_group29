@@ -7,11 +7,11 @@ editor_options:
 For this project, we use three datasets that provide insights into different aspects of restaurant and food-related data.
 
 ## Description
-1. Restaurant Inspection Data
+### Restaurant Inspection Data
 
 We utilize the [DOHMH New York City Restaurant Inspection dataset](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data) from the NYC OpenData library. This dataset includes details on all sustained or pending violation citations from full or special program inspections conducted within three years prior to the most recent inspection. The data covers restaurants and college cafeterias that are actively operating as of the RECORD DATE (the date the data was pulled).
 
-Key points about this dataset:
+**Key points about this dataset**:
 	- This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data.
 	- Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation.
 	- Establishments are uniquely identified by their CAMIS (record ID) number.
@@ -20,37 +20,41 @@ Key points about this dataset:
 	- Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection.
 	- Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.
 
-2. Fast Food Chain Analysis Data
+### Fast Food Chain Analysis Data
 
 For the analysis of the most popular fast food chains, we use a dataset that provides nationwide data for the United States, not limited to New York. This dataset is sourced from [Passby Blog’s Top Fast Food Chains Foot Traffic](https://passby.com/blog/top-fast-food-chains-foot-traffic/), offering insights into consumer behavior and fast food chain popularity across the country.
 
-3. Customer Satisfaction Data
+We build this dataset manually.
 
-To explore customer satisfaction, we use data from the [American Customer Satisfaction Index (ACSI)](https://theacsi.org/industries/restaurant/food-delivery/). This dataset evaluates customer satisfaction levels across various restaurant types and food delivery services, providing valuable insights into consumer preferences and trends.
+### Customer Satisfaction Data
 
-## Missing value analysis
+To explore customer satisfaction, we use data from the [American Customer Satisfaction Index (ACSI)](https://theacsi.org/industries/restaurant/fast-food-restaurants/). This dataset evaluates customer satisfaction levels across various restaurant types and food delivery services, providing valuable insights into consumer preferences and trends.
 
-For the first dataset, the process includes:
-1. Remove key feature missing including restaurant names, inspect date, and grade.
-2. Change categorical variables into factors for visualization.
-(3. Create additional features for analysis.)
+We build this dataset manually.
 
-First, read the data.
+## Missing value analysis 
+### Restaurant Inspection Data
+
+The dataset processing steps include the following:
+	1.	Removing records with missing values in key features, such as restaurant names, inspection dates, and grades.
+	2.	Converting categorical variables into factors to facilitate visualization.
+	3.	(Optional) Creating additional features to enhance the analysis.
+
+First, read the data:
 ```{r}
 library(tidyverse)
 library(ggrepel)
 restaurant<-read_csv("/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv")
 ```
 
-Get a general understanding of the data.
+Get a general understanding of the data:
 ```{r}
 glimpse(restaurant)
 summary(restaurant)
 colnames(restaurant)
 ```
 
-Check missing data.
-Remove key feature missing including restaurant names, inspection date, and grade.
+Check missing data, and remove key feature missing including restaurant names, inspection date, and grade.
 ```{r}
 restaurant |> summarise(across(everything(), ~ sum(is.na(.))))
 
@@ -58,14 +62,11 @@ restaurant_clean <- restaurant |>
   drop_na(DBA, `INSPECTION DATE`, GRADE)
 ```
 
+Detect grade distribution:
 ```{r}
 grade_distribution <- restaurant_clean |>
   count(GRADE, sort = TRUE)
-
-# Display the grade distribution
-grade_distribution
-
-# Visualize the grade distribution
+#grade_distribution
 restaurant_clean |>
   ggplot(aes(x = GRADE)) +
   geom_bar() +
@@ -75,5 +76,74 @@ restaurant_clean |>
     y = "Count"
   ) +
   theme_minimal()
+```
+
+### Fast Food Chain Analysis Data
+For this dataset, there is no need to address missing data. Instead, let’s focus on gaining a general understanding of the dataset.
+```{r}
+fast_food<-read_csv("/Users/zhiyizhang/Downloads/fast_food_chains_foot_traffic.csv")
+colnames(fast_food)
+```
+Show the number of different fast food locations:
+```{r}
+fast_food |>
+  ggplot(aes(x = reorder(Chain, USLocations), y = USLocations)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(
+    title = "Number of U.S. Locations of Fast Food Chains",
+    x = "Fast Food Chain",
+    y = "Number of U.S. Locations"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+Show the relationship between the number of US locations and global revenue:
+```{r}
+fast_food |>
+  ggplot(aes(x = USLocations, y = `2023 Global Revenue (Billion USD)`, label = Chain)) +
+  geom_point(aes(color = `Customer Satisfaction (%)`, size = `2023 Global Revenue (Billion USD)`)) + # Add size and color mapping
+  geom_text_repel() + # Add labels with text repelling
+  scale_x_log10() + # Log scale for the X-axis
+  scale_y_log10() + # Log scale for the Y-axis
+  labs(
+    title = "Fast Food Chains: U.S. Locations vs. Global Revenue",
+    x = "Total Number of U.S. Locations (Log10 Scale)",
+    y = "2023 Global Revenue (Billion USD, Log10 Scale)",
+    color = "Customer Satisfaction (%)",
+    size = "2023 Global Revenue (Billion USD)"
+  ) +
+  theme_minimal()
+```
+
+### Customer Satisfaction Data
+For this dataset, there is also no need to address missing data. Instead, let’s focus on gaining a general understanding of the dataset.
+```{r}
+customer_satisfaction<-read_csv("/Users/zhiyizhang/Downloads/customer_satisfation_2023_2024.csv")
+colnames(customer_satisfaction)
+```
+Using line chart to show the satisfaction change of each company.
+```{r}
+customer_satisfaction <- customer_satisfaction |>
+  mutate(across(`2023`:`2024`, as.numeric))
+customer_satisfaction_long <- customer_satisfaction |>
+  pivot_longer(cols = c(`2023`, `2024`), names_to = "Year", values_to = "Score") |>
+  mutate(Year = as.numeric(Year))  # Convert Year to numeric
+
+customer_satisfaction_long |>
+  ggplot(aes(x = Year, y = Score, group = Company, color = Company)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_x_continuous(breaks = c(2023, 2024), labels = c("2023", "2024")) +
+  labs(
+    title = "Fast Food Company Trends: 2023 vs 2024",
+    x = "Year",
+    y = "Score",
+    color = "Company"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
 ```
 
