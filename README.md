@@ -1,1 +1,1 @@
-This is our final project for EDAV 24 fall.
+Welcome to out EDAV Fall 2024 Final Project!
