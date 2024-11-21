@@ -42,14 +42,14 @@ The dataset processing steps include the following:
 
 First, read the data:
 ```{r}
-library(tidyverse)
-library(ggrepel)
+#library(tidyverse)
+#library(ggrepel)
 restaurant<-read_csv("/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv")
 ```
 
 Get a general understanding of the data:
 ```{r}
-glimpse(restaurant)
+#glimpse(restaurant)
 summary(restaurant)
 colnames(restaurant)
 ```
