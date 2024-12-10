@@ -183,7 +183,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a></li>
+  <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">2.1</span> Description</a>
+  <ul class="collapse">
+  <li><a href="#restaurant-inspection-data" id="toc-restaurant-inspection-data" class="nav-link" data-scroll-target="#restaurant-inspection-data"><span class="header-section-number">2.1.1</span> Restaurant Inspection Data</a></li>
+  <li><a href="#fast-food-chain-analysis-data" id="toc-fast-food-chain-analysis-data" class="nav-link" data-scroll-target="#fast-food-chain-analysis-data"><span class="header-section-number">2.1.2</span> Fast Food Chain Analysis Data</a></li>
+  <li><a href="#customer-satisfaction-data" id="toc-customer-satisfaction-data" class="nav-link" data-scroll-target="#customer-satisfaction-data"><span class="header-section-number">2.1.3</span> Customer Satisfaction Data</a></li>
+  </ul></li>
   <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://zhiyi-z2233.github.io/EDAV_final_group29/edit/main/data.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://zhiyi-z2233.github.io/EDAV_final_group29/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -213,23 +218,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>For this project, we use three datasets that provide insights into different aspects of restaurant and food-related data.</p>
 <section id="description" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="description"><span class="header-section-number">2.1</span> Description</h2>
-<ol type="1">
-<li>Restaurant Inspection Data</li>
-</ol>
+<section id="restaurant-inspection-data" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="restaurant-inspection-data"><span class="header-section-number">2.1.1</span> Restaurant Inspection Data</h3>
 <p>We utilize the <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data">DOHMH New York City Restaurant Inspection dataset</a> from the NYC OpenData library. This dataset includes details on all sustained or pending violation citations from full or special program inspections conducted within three years prior to the most recent inspection. The data covers restaurants and college cafeterias that are actively operating as of the RECORD DATE (the date the data was pulled).</p>
-<p>Key points about this dataset: - This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data. - Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation. - Establishments are uniquely identified by their CAMIS (record ID) number. - Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE. - Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations. - Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection. - Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.</p>
-<ol start="2" type="1">
-<li>Fast Food Chain Analysis Data</li>
-</ol>
-<p>For the analysis of the most popular fast food chains, we use a dataset that provides nationwide data for the United States, not limited to New York. This dataset is sourced from <a href="https://passby.com/blog/top-fast-food-chains-foot-traffic/">Passby Blog’s Top Fast Food Chains Foot Traffic</a>, offering insights into consumer behavior and fast food chain popularity across the country.</p>
-<ol start="3" type="1">
-<li>Customer Satisfaction Data</li>
-</ol>
+<p><strong>Key points about this dataset</strong>: - This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data. - Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation. - Establishments are uniquely identified by their CAMIS (record ID) number. - Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE. - Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations. - Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection. - Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.</p>
+</section>
+<section id="fast-food-chain-analysis-data" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="fast-food-chain-analysis-data"><span class="header-section-number">2.1.2</span> Fast Food Chain Analysis Data</h3>
+<p>For the analysis of the most popular fast food chains, we use a dataset that provides nationwide data for the United States, not limited to New York. This dataset is sourced from <a href="https://passby.com/blog/top-fast-food-chains-foot-traffic/">Passby Blog’s Top Fast Food Chains Foot Traffic</a>, offering insights into consumer behavior and fast food chain popularity across the country. We build this dataset manually.</p>
+</section>
+<section id="customer-satisfaction-data" class="level3" data-number="2.1.3">
+<h3 data-number="2.1.3" class="anchored" data-anchor-id="customer-satisfaction-data"><span class="header-section-number">2.1.3</span> Customer Satisfaction Data</h3>
 <p>To explore customer satisfaction, we use data from the <a href="https://theacsi.org/industries/restaurant/food-delivery/">American Customer Satisfaction Index (ACSI)</a>. This dataset evaluates customer satisfaction levels across various restaurant types and food delivery services, providing valuable insights into consumer preferences and trends.</p>
+<p>We build this dataset manually.</p>
+</section>
 </section>
 <section id="missing-value-analysis" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</h2>
-<p>For the first dataset, the process includes: 1. Remove key feature missing including restaurant names, inspect date, and grade. 2. Change categorical variables into factors for visualization. (3. Create additional features for analysis.)</p>
+<p>The dataset processing steps include the following: 1. Removing records with missing values in key features, such as restaurant names, inspection dates, and grades. 2. Converting categorical variables into factors to facilitate visualization. 3. (Optional) Creating additional features to enhance the analysis.</p>
 <p>First, read the data.</p>
 <div class="cell">
 <details class="code-fold">
@@ -251,21 +257,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>restaurant<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>restaurant<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 258714 Columns: 27
+<pre><code>Rows: 258714 Columns: 8
 ── Column specification ────────────────────────────────────────────────────────
 Delimiter: ","
-chr (17): DBA, BORO, BUILDING, STREET, CUISINE DESCRIPTION, INSPECTION DATE,...
-dbl  (9): CAMIS, ZIPCODE, PHONE, SCORE, Latitude, Longitude, Community Board...
-lgl  (1): Location Point1
+chr (6): DBA, BORO, CUISINE DESCRIPTION, INSPECTION DATE, GRADE, INSPECTION ...
+dbl (2): CAMIS, SCORE
 
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
@@ -275,150 +274,79 @@ lgl  (1): Location Point1
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 258,714
-Columns: 27
-$ CAMIS                   &lt;dbl&gt; 50159534, 50096994, 50160319, 50146205, 416122…
-$ DBA                     &lt;chr&gt; "EL CALDERO RESTAURANT &amp; SPORT BAR", "JONGRO B…
-$ BORO                    &lt;chr&gt; "Bronx", "Queens", "Queens", "Manhattan", "Que…
-$ BUILDING                &lt;chr&gt; "1267", "15702", "9607", "550", "88-18/20", "3…
-$ STREET                  &lt;chr&gt; "JEROME AVENUE", "NORTHERN BLVD", "METROPOLITA…
-$ ZIPCODE                 &lt;dbl&gt; 10452, 11354, 11375, 10014, 11421, 10011, 1001…
-$ PHONE                   &lt;dbl&gt; 9178541366, 7183535101, 3474692945, 7043285184…
-$ `CUISINE DESCRIPTION`   &lt;chr&gt; NA, NA, NA, NA, "Mediterranean", NA, "American…
-$ `INSPECTION DATE`       &lt;chr&gt; "01/01/1900", "01/01/1900", "01/01/1900", "01/…
-$ ACTION                  &lt;chr&gt; NA, NA, NA, NA, "Violations were cited in the …
-$ `VIOLATION CODE`        &lt;chr&gt; NA, NA, NA, NA, "15-21", NA, "02B", NA, NA, NA…
-$ `VIOLATION DESCRIPTION` &lt;chr&gt; NA, NA, NA, NA, "Flavored tobacco products sol…
-$ `CRITICAL FLAG`         &lt;chr&gt; "Not Applicable", "Not Applicable", "Not Appli…
-$ SCORE                   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 34, NA, NA, NA, NA, NA…
-$ GRADE                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, "C", NA, NA, NA, NA, N…
-$ `GRADE DATE`            &lt;chr&gt; NA, NA, NA, NA, NA, NA, "08/30/2024", NA, NA, …
-$ `RECORD DATE`           &lt;chr&gt; "11/19/2024", "11/19/2024", "11/19/2024", "11/…
-$ `INSPECTION TYPE`       &lt;chr&gt; NA, NA, NA, NA, "Smoke-Free Air Act / Initial …
-$ Latitude                &lt;dbl&gt; 40.83735, 40.76373, 40.71132, 40.72815, NA, 40…
-$ Longitude               &lt;dbl&gt; -73.92048, -73.80809, -73.85631, -74.00952, NA…
-$ `Community Board`       &lt;dbl&gt; 204, 407, 406, 102, NA, 105, 104, 101, 402, 20…
-$ `Council District`      &lt;chr&gt; "16", "20", "29", "03", NA, "02", "03", "01", …
-$ `Census Tract`          &lt;chr&gt; "021900", "117100", "070700", "003700", NA, "0…
-$ BIN                     &lt;dbl&gt; 2008279, 4119352, 4075972, 1010356, NA, 108061…
-$ BBL                     &lt;dbl&gt; 2028550025, 4052760019, 4031920001, 1005967502…
-$ NTA                     &lt;chr&gt; "BX26", "QN51", "QN17", "MN24", NA, "MN13", "M…
-$ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
+Columns: 8
+$ CAMIS                 &lt;dbl&gt; 50159534, 50096994, 50160319, 50146205, 41612260…
+$ DBA                   &lt;chr&gt; "EL CALDERO RESTAURANT &amp; SPORT BAR", "JONGRO BAN…
+$ BORO                  &lt;chr&gt; "Bronx", "Queens", "Queens", "Manhattan", "Queen…
+$ `CUISINE DESCRIPTION` &lt;chr&gt; NA, NA, NA, NA, "Mediterranean", NA, "American",…
+$ `INSPECTION DATE`     &lt;chr&gt; "1/1/1900", "1/1/1900", "1/1/1900", "1/1/1900", …
+$ SCORE                 &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 34, NA, NA, NA, NA, NA, …
+$ GRADE                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, "C", NA, NA, NA, NA, NA,…
+$ `INSPECTION TYPE`     &lt;chr&gt; NA, NA, NA, NA, "Smoke-Free Air Act / Initial In…</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>     CAMIS              DBA                BORO             BUILDING        
- Min.   :30075445   Length:258714      Length:258714      Length:258714     
- 1st Qu.:41692608   Class :character   Class :character   Class :character  
- Median :50075750   Mode  :character   Mode  :character   Mode  :character  
- Mean   :47729105                                                           
- 3rd Qu.:50115166                                                           
- Max.   :50162077                                                           
-                                                                            
-    STREET             ZIPCODE          PHONE           CUISINE DESCRIPTION
- Length:258714      Min.   : 8512   Min.   :0.000e+00   Length:258714      
- Class :character   1st Qu.:10023   1st Qu.:3.474e+09   Class :character   
- Mode  :character   Median :11101   Median :7.183e+09   Mode  :character   
-                    Mean   :10709   Mean   :5.860e+09                      
-                    3rd Qu.:11231   3rd Qu.:7.188e+09                      
-                    Max.   :14057   Max.   :7.189e+10                      
-                    NA's   :2662    NA's   :288                            
- INSPECTION DATE       ACTION          VIOLATION CODE     VIOLATION DESCRIPTION
- Length:258714      Length:258714      Length:258714      Length:258714        
- Class :character   Class :character   Class :character   Class :character     
- Mode  :character   Mode  :character   Mode  :character   Mode  :character     
-                                                                               
-                                                                               
-                                                                               
-                                                                               
- CRITICAL FLAG          SCORE           GRADE            GRADE DATE       
+<pre><code>     CAMIS              DBA                BORO           CUISINE DESCRIPTION
+ Min.   :30075445   Length:258714      Length:258714      Length:258714      
+ 1st Qu.:41692608   Class :character   Class :character   Class :character   
+ Median :50075750   Mode  :character   Mode  :character   Mode  :character   
+ Mean   :47729105                                                            
+ 3rd Qu.:50115166                                                            
+ Max.   :50162077                                                            
+                                                                             
+ INSPECTION DATE        SCORE           GRADE           INSPECTION TYPE   
  Length:258714      Min.   :  0.00   Length:258714      Length:258714     
  Class :character   1st Qu.: 12.00   Class :character   Class :character  
  Mode  :character   Median : 20.00   Mode  :character   Mode  :character  
                     Mean   : 24.08                                        
                     3rd Qu.: 32.00                                        
                     Max.   :168.00                                        
-                    NA's   :12747                                         
- RECORD DATE        INSPECTION TYPE       Latitude       Longitude     
- Length:258714      Length:258714      Min.   : 0.00   Min.   :-74.25  
- Class :character   Class :character   1st Qu.:40.68   1st Qu.:-73.99  
- Mode  :character   Mode  :character   Median :40.73   Median :-73.96  
-                                       Mean   :40.31   Mean   :-73.18  
-                                       3rd Qu.:40.76   3rd Qu.:-73.90  
-                                       Max.   :40.91   Max.   :  0.00  
-                                       NA's   :353     NA's   :353     
- Community Board Council District   Census Tract            BIN         
- Min.   :101     Length:258714      Length:258714      Min.   :1000000  
- 1st Qu.:106     Class :character   Class :character   1st Qu.:1051720  
- Median :302     Mode  :character   Mode  :character   Median :3022098  
- Mean   :255                                           Mean   :2582382  
- 3rd Qu.:401                                           3rd Qu.:4007882  
- Max.   :595                                           Max.   :5799501  
- NA's   :3297                                          NA's   :4610     
-      BBL                NTA            Location Point1
- Min.   :1.000e+00   Length:258714      Mode:logical   
- 1st Qu.:1.011e+09   Class :character   NA's:258714    
- Median :3.008e+09   Mode  :character                  
- Mean   :2.476e+09                                     
- 3rd Qu.:4.005e+09                                     
- Max.   :5.270e+09                                     
- NA's   :638                                           </code></pre>
+                    NA's   :12747                                         </code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "CAMIS"                 "DBA"                   "BORO"                 
- [4] "BUILDING"              "STREET"                "ZIPCODE"              
- [7] "PHONE"                 "CUISINE DESCRIPTION"   "INSPECTION DATE"      
-[10] "ACTION"                "VIOLATION CODE"        "VIOLATION DESCRIPTION"
-[13] "CRITICAL FLAG"         "SCORE"                 "GRADE"                
-[16] "GRADE DATE"            "RECORD DATE"           "INSPECTION TYPE"      
-[19] "Latitude"              "Longitude"             "Community Board"      
-[22] "Council District"      "Census Tract"          "BIN"                  
-[25] "BBL"                   "NTA"                   "Location Point1"      </code></pre>
+<pre><code>[1] "CAMIS"               "DBA"                 "BORO"               
+[4] "CUISINE DESCRIPTION" "INSPECTION DATE"     "SCORE"              
+[7] "GRADE"               "INSPECTION TYPE"    </code></pre>
 </div>
 </div>
 <p>Check missing data. Remove key feature missing including restaurant names, inspection date, and grade.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>restaurant <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>restaurant <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 27
-  CAMIS   DBA  BORO BUILDING STREET ZIPCODE PHONE `CUISINE DESCRIPTION`
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;  &lt;int&gt;   &lt;int&gt; &lt;int&gt;                 &lt;int&gt;
-1     0   962     0      366      0    2662   288                  2838
-# ℹ 19 more variables: `INSPECTION DATE` &lt;int&gt;, ACTION &lt;int&gt;,
-#   `VIOLATION CODE` &lt;int&gt;, `VIOLATION DESCRIPTION` &lt;int&gt;,
-#   `CRITICAL FLAG` &lt;int&gt;, SCORE &lt;int&gt;, GRADE &lt;int&gt;, `GRADE DATE` &lt;int&gt;,
-#   `RECORD DATE` &lt;int&gt;, `INSPECTION TYPE` &lt;int&gt;, Latitude &lt;int&gt;,
-#   Longitude &lt;int&gt;, `Community Board` &lt;int&gt;, `Council District` &lt;int&gt;,
-#   `Census Tract` &lt;int&gt;, BIN &lt;int&gt;, BBL &lt;int&gt;, NTA &lt;int&gt;,
-#   `Location Point1` &lt;int&gt;</code></pre>
+<pre><code># A tibble: 1 × 8
+  CAMIS   DBA  BORO `CUISINE DESCRIPTION` `INSPECTION DATE` SCORE  GRADE
+  &lt;int&gt; &lt;int&gt; &lt;int&gt;                 &lt;int&gt;             &lt;int&gt; &lt;int&gt;  &lt;int&gt;
+1     0   962     0                  2838                 0 12747 134001
+# ℹ 1 more variable: `INSPECTION TYPE` &lt;int&gt;</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>restaurant_clean <span class="ot">&lt;-</span> restaurant <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(DBA, <span class="st">`</span><span class="at">INSPECTION DATE</span><span class="st">`</span>, GRADE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>restaurant_clean <span class="ot">&lt;-</span> restaurant <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(DBA, <span class="st">`</span><span class="at">INSPECTION DATE</span><span class="st">`</span>, GRADE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>grade_distribution <span class="ot">&lt;-</span> restaurant_clean <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(GRADE, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the grade distribution</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>grade_distribution</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>grade_distribution <span class="ot">&lt;-</span> restaurant_clean <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(GRADE, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the grade distribution</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>grade_distribution</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 2
@@ -433,16 +361,16 @@ $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the grade distribution</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>restaurant_clean <span class="sc">|&gt;</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> GRADE)) <span class="sc">+</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Grades"</span>,</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Grade"</span>,</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize the grade distribution</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>restaurant_clean <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> GRADE)) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Grades"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Grade"</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
