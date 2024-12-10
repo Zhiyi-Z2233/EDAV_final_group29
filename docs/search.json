@@ -58,5 +58,25 @@
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
     ]
+  },
+  {
+    "objectID": "results.html#fast-food-chain-analysis-data",
+    "href": "results.html#fast-food-chain-analysis-data",
+    "title": "3  Results",
+    "section": "3.3 Fast Food Chain Analysis Data",
+    "text": "3.3 Fast Food Chain Analysis Data\n\n\nCode\nfast_food&lt;-read_csv(\"/Users/zhiyizhang/Downloads/fast_food_chains_foot_traffic.csv\")\n\n\nRows: 8 Columns: 11\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): Chain, GlobalLocations, 2023 U.S. Revenue (Billion USD)\ndbl (8): USLocations, 2023 Global Revenue (Billion USD), Customer Satisfacti...\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\ncolnames(fast_food)\n\n\n [1] \"Chain\"                                         \n [2] \"USLocations\"                                   \n [3] \"GlobalLocations\"                               \n [4] \"2023 U.S. Revenue (Billion USD)\"               \n [5] \"2023 Global Revenue (Billion USD)\"             \n [6] \"Customer Satisfaction (%)\"                     \n [7] \"Average Daily Visits per U.S. Store\"           \n [8] \"Total U.S. Visits in June 2024 (Million)\"      \n [9] \"Average Visits per Store in June 2024\"         \n[10] \"Change in Visits (June 2024 vs. May 2024) (%)\" \n[11] \"Change in Visits (June 2024 vs. June 2023) (%)\"\n\n\nCode\nfast_food |&gt;\n  ggplot(aes(x = reorder(Chain, USLocations), y = USLocations)) +\n  geom_bar(stat = \"identity\", fill = \"steelblue\") +\n  labs(\n    title = \"Number of U.S. Locations of Fast Food Chains\",\n    x = \"Fast Food Chain\",\n    y = \"Number of U.S. Locations\"\n  ) +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n\n\n\n\nShow the relationship between the number of US locations and global revenue:\n\n\nCode\nfast_food |&gt;\n  ggplot(aes(x = USLocations, y = `2023 Global Revenue (Billion USD)`, label = Chain)) +\n  geom_point(aes(color = `Customer Satisfaction (%)`, size = `2023 Global Revenue (Billion USD)`)) + # Add size and color mapping\n  geom_text_repel() + # Add labels with text repelling\n  scale_x_log10() + # Log scale for the X-axis\n  scale_y_log10() + # Log scale for the Y-axis\n  labs(\n    title = \"Fast Food Chains: U.S. Locations vs. Global Revenue\",\n    x = \"Total Number of U.S. Locations (Log10 Scale)\",\n    y = \"2023 Global Revenue (Billion USD, Log10 Scale)\",\n    color = \"Customer Satisfaction (%)\",\n    size = \"2023 Global Revenue (Billion USD)\"\n  ) +\n  theme_minimal()",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
+  },
+  {
+    "objectID": "results.html#customer-satisfaction-data",
+    "href": "results.html#customer-satisfaction-data",
+    "title": "3  Results",
+    "section": "3.4 Customer Satisfaction Data",
+    "text": "3.4 Customer Satisfaction Data\n\n\nCode\ncustomer_satisfaction&lt;-read_csv(\"/Users/zhiyizhang/Downloads/customer_satisfation_2023_2024.csv\")\n\n\nRows: 25 Columns: 4\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): Company, 2023, % CHANGE\ndbl (1): 2024\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\nCode\ncolnames(customer_satisfaction)\n\n\n[1] \"Company\"  \"2023\"     \"2024\"     \"% CHANGE\"\n\n\nCode\ncustomer_satisfaction &lt;- customer_satisfaction |&gt;\n  mutate(across(`2023`:`2024`, as.numeric))\n\n\nWarning: There was 1 warning in `mutate()`.\nℹ In argument: `across(`2023`:`2024`, as.numeric)`.\nCaused by warning:\n! NAs introduced by coercion\n\n\nCode\ncustomer_satisfaction_long &lt;- customer_satisfaction |&gt;\n  pivot_longer(cols = c(`2023`, `2024`), names_to = \"Year\", values_to = \"Score\") |&gt;\n  mutate(Year = as.numeric(Year))  # Convert Year to numeric\n\ncustomer_satisfaction_long |&gt;\n  ggplot(aes(x = Year, y = Score, group = Company, color = Company)) +\n  geom_line(size = 1) +\n  geom_point(size = 2) +\n  scale_x_continuous(breaks = c(2023, 2024), labels = c(\"2023\", \"2024\")) +\n  labs(\n    title = \"Fast Food Company Trends: 2023 vs 2024\",\n    x = \"Year\",\n    y = \"Score\",\n    color = \"Company\"\n  ) +\n  theme_minimal() +\n  theme(\n    legend.position = \"right\",\n    axis.text.x = element_text(angle = 45, hjust = 1)\n  )\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_line()`).\n\n\nWarning: Removed 1 row containing missing values or values outside the scale range\n(`geom_point()`).",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Results</span>"
+    ]
   }
 ]

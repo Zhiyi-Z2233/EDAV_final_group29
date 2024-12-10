@@ -111,3 +111,65 @@ ggplot(avg_score_by_boro_year, aes(x = factor(year), y = avg_score, fill = BORO)
   theme(legend.position = "top")
 ```
 Over the past five years, Brooklyn and Queens have consistently ranked as the top two boroughs, while Staten Island has consistently had the lowest scores. Manhattan, positioned in the middle, shows relatively stable performance. A particularly interesting trend is the steady increase in Manhattan’s average score over the past decade. In fact, all boroughs have seen an improvement in their scores over this period.
+
+## Fast Food Chain Analysis Data
+```{r}
+fast_food<-read_csv("/Users/zhiyizhang/Downloads/fast_food_chains_foot_traffic.csv")
+colnames(fast_food)
+fast_food |>
+  ggplot(aes(x = reorder(Chain, USLocations), y = USLocations)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(
+    title = "Number of U.S. Locations of Fast Food Chains",
+    x = "Fast Food Chain",
+    y = "Number of U.S. Locations"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+Show the relationship between the number of US locations and global revenue:
+```{r}
+fast_food |>
+  ggplot(aes(x = USLocations, y = `2023 Global Revenue (Billion USD)`, label = Chain)) +
+  geom_point(aes(color = `Customer Satisfaction (%)`, size = `2023 Global Revenue (Billion USD)`)) + # Add size and color mapping
+  geom_text_repel() + # Add labels with text repelling
+  scale_x_log10() + # Log scale for the X-axis
+  scale_y_log10() + # Log scale for the Y-axis
+  labs(
+    title = "Fast Food Chains: U.S. Locations vs. Global Revenue",
+    x = "Total Number of U.S. Locations (Log10 Scale)",
+    y = "2023 Global Revenue (Billion USD, Log10 Scale)",
+    color = "Customer Satisfaction (%)",
+    size = "2023 Global Revenue (Billion USD)"
+  ) +
+  theme_minimal()
+```
+## Customer Satisfaction Data
+```{r}
+customer_satisfaction<-read_csv("/Users/zhiyizhang/Downloads/customer_satisfation_2023_2024.csv")
+colnames(customer_satisfaction)
+customer_satisfaction <- customer_satisfaction |>
+  mutate(across(`2023`:`2024`, as.numeric))
+
+customer_satisfaction_long <- customer_satisfaction |>
+  pivot_longer(cols = c(`2023`, `2024`), names_to = "Year", values_to = "Score") |>
+  mutate(Year = as.numeric(Year))  # Convert Year to numeric
+
+customer_satisfaction_long |>
+  ggplot(aes(x = Year, y = Score, group = Company, color = Company)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_x_continuous(breaks = c(2023, 2024), labels = c("2023", "2024")) +
+  labs(
+    title = "Fast Food Company Trends: 2023 vs 2024",
+    x = "Year",
+    y = "Score",
+    color = "Company"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
