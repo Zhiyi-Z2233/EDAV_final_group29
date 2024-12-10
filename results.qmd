@@ -1,1 +1,175 @@
 # Results
+Since the data from the year 1900 lacks both grade and score information, we exclude these records. We will focus on the following eight columns, which contain all the relevant data for our analysis.
+```{r}
+library(tidyverse)
+library(ggrepel)
+restaurant<-read_csv("/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv")
+restaurant <- restaurant |> 
+  mutate(`INSPECTION DATE` = as.Date(`INSPECTION DATE`, format = "%m/%d/%Y")) |>
+  filter(format(`INSPECTION DATE`, "%Y") != "1900")
+
+glimpse(restaurant)
+```
+## Favorite Cuisine Type
+```{r}
+library(ggplot2)
+cuisine_data <- restaurant |>
+  filter(!is.na(`CUISINE DESCRIPTION`)) |>
+  count(`CUISINE DESCRIPTION`, name = "count") |>
+  arrange(desc(count)) |>
+  mutate(Cuisine = if_else(row_number() <= 15, `CUISINE DESCRIPTION`, "Other")) |>
+  group_by(Cuisine) |>
+  summarise(count = sum(count)) |>
+  mutate(proportion = count / sum(count), 
+         label = paste0(Cuisine, " (", round(proportion * 100, 1), "%)")) |>
+  arrange(desc(count))
+
+print(cuisine_data$Cuisine)
+```
+We can see that American, Chinese, and Latin American food are the top three popular cuisine, followed by Mexican, Caribbean, and Japanese cuisines. Then we want to know the average weighted score of these cuisine types.
+```{r}
+top_15_cuisines <- c("Other", "American", "Chinese", "Coffee/Tea", "Pizza", 
+                     "Latin American", "Mexican", "Bakery Products/Desserts", 
+                     "Caribbean", "Japanese", "Italian", "Spanish", 
+                     "Chicken", "Donuts", "Sandwiches", "Asian/Asian Fusion")
+
+cuisine_avg_score <- restaurant |>
+  filter(`CUISINE DESCRIPTION` %in% top_15_cuisines, !is.na(SCORE)) |> 
+  group_by(`CUISINE DESCRIPTION`) |> 
+  summarise(
+    avg_score = mean(SCORE, na.rm = TRUE) 
+  ) |>
+  arrange(desc(avg_score))
+
+ggplot(cuisine_avg_score, aes(x = reorder(`CUISINE DESCRIPTION`, avg_score), y = avg_score, fill = avg_score)) +
+  geom_bar(stat = "identity") +
+  coord_flip() + 
+  labs(
+    title = "Top 15 Cuisine Types by Average Score",
+    x = "Cuisine Type",
+    y = "Average Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+We observe that Caribbean, Chinese, Spanish, and Asian/Asian Fusion cuisines rank highly. However, despite being one of the most popular types, American cuisine does not receive a particularly good score. On the other hand, Donuts appear at the bottom, which aligns with our expectations, as they tend to be low in nutritional value and may not meet high hygiene standards during processing.
+
+Use box plot to show information:
+```{r}
+cutoff <- data.frame(yintercept = 14, cutoff = factor(14))
+
+restaurant_top_15 <- restaurant |>
+  filter(!is.na(SCORE), !is.na(`CUISINE DESCRIPTION`)) |>
+  group_by(`CUISINE DESCRIPTION`) |>
+  summarise(avg_score = mean(SCORE, na.rm = TRUE)) |>
+  arrange(desc(avg_score)) |>
+  slice(1:15)
+
+ggplot(restaurant |> filter(`CUISINE DESCRIPTION` %in% restaurant_top_15$`CUISINE DESCRIPTION`), 
+       aes(x = `CUISINE DESCRIPTION`, y = SCORE)) + 
+  geom_boxplot(outlier.size = 2) +
+  ggtitle("Top 15 Cuisines by Scores") +
+  geom_hline(aes(yintercept = yintercept, linetype = cutoff), data = cutoff, color = "red", linewidth = 1.5) + 
+  geom_text(aes(0, 12, label = "A Grade", hjust = -.1, vjust = -1, color = "red")) +
+  theme_minimal() + 
+  theme(plot.title = element_text(hjust = 0.5),
+        axis.title.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(vjust = 0.5, size = 11),
+        legend.position = "none") +
+  coord_flip()
+```
+## District Comparison
+Next, we want to know the inspection result of different district in New York in the past ten years.
+```{r}
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+
+restaurant$`INSPECTION DATE` <- as.Date(restaurant$`INSPECTION DATE`)
+
+restaurant <- restaurant |>
+  mutate(year = year(`INSPECTION DATE`))
+
+avg_score_by_boro_year <- restaurant |>
+  filter(!is.na(SCORE)) |>
+  group_by(year, BORO) |>
+  summarise(avg_score = mean(SCORE, na.rm = TRUE))
+
+ggplot(avg_score_by_boro_year, aes(x = factor(year), y = avg_score, fill = BORO)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_text(aes(label = round(avg_score, 1)), 
+            position = position_dodge(width = 0.8), 
+            vjust = -0.5, size = 2) +
+  labs(
+    title = "Average Score by Borough and Year",
+    x = "Year",
+    y = "Average Score",
+    fill = "Borough"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "top")
+```
+Over the past five years, Brooklyn and Queens have consistently ranked as the top two boroughs, while Staten Island has consistently had the lowest scores. Manhattan, positioned in the middle, shows relatively stable performance. A particularly interesting trend is the steady increase in Manhattan’s average score over the past decade. In fact, all boroughs have seen an improvement in their scores over this period.
+
+## Fast Food Chain Analysis Data
+```{r}
+fast_food<-read_csv("/Users/zhiyizhang/Downloads/fast_food_chains_foot_traffic.csv")
+colnames(fast_food)
+fast_food |>
+  ggplot(aes(x = reorder(Chain, USLocations), y = USLocations)) +
+  geom_bar(stat = "identity", fill = "steelblue") +
+  labs(
+    title = "Number of U.S. Locations of Fast Food Chains",
+    x = "Fast Food Chain",
+    y = "Number of U.S. Locations"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+Show the relationship between the number of US locations and global revenue:
+```{r}
+fast_food |>
+  ggplot(aes(x = USLocations, y = `2023 Global Revenue (Billion USD)`, label = Chain)) +
+  geom_point(aes(color = `Customer Satisfaction (%)`, size = `2023 Global Revenue (Billion USD)`)) + # Add size and color mapping
+  geom_text_repel() + # Add labels with text repelling
+  scale_x_log10() + # Log scale for the X-axis
+  scale_y_log10() + # Log scale for the Y-axis
+  labs(
+    title = "Fast Food Chains: U.S. Locations vs. Global Revenue",
+    x = "Total Number of U.S. Locations (Log10 Scale)",
+    y = "2023 Global Revenue (Billion USD, Log10 Scale)",
+    color = "Customer Satisfaction (%)",
+    size = "2023 Global Revenue (Billion USD)"
+  ) +
+  theme_minimal()
+```
+## Customer Satisfaction Data
+```{r}
+customer_satisfaction<-read_csv("/Users/zhiyizhang/Downloads/customer_satisfation_2023_2024.csv")
+colnames(customer_satisfaction)
+customer_satisfaction <- customer_satisfaction |>
+  mutate(across(`2023`:`2024`, as.numeric))
+
+customer_satisfaction_long <- customer_satisfaction |>
+  pivot_longer(cols = c(`2023`, `2024`), names_to = "Year", values_to = "Score") |>
+  mutate(Year = as.numeric(Year))  # Convert Year to numeric
+
+customer_satisfaction_long |>
+  ggplot(aes(x = Year, y = Score, group = Company, color = Company)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  scale_x_continuous(breaks = c(2023, 2024), labels = c("2023", "2024")) +
+  labs(
+    title = "Fast Food Company Trends: 2023 vs 2024",
+    x = "Year",
+    y = "Score",
+    color = "Company"
+  ) +
+  theme_minimal() +
+  theme(
+    legend.position = "right",
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  )
+```
+
