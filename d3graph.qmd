@@ -1,13 +1,21 @@
 # Interactive graph
+Try explore the change of the scores across boroughs over the past 10 years!
 
 <style>
   * {
     font-family: sans-serif;
   }
-</style> 
+  </style> 
+  
+</head>
+<body>
+  <h1>Scores by borough 2015-2024</h1>
+  <label for="yearSelector">Select Year:</label>
+  <select id="yearSelector"></select>
 
 <div id="plot">
+  <svg width="800" height="600"></svg>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
-<script src="scripts/myscript.js"></script>
+<script src="myscript.js"></script>

@@ -1,17 +1,46 @@
 # Results
 Since the data from the year 1900 lacks both grade and score information, we exclude these records. We will focus on the following eight columns, which contain all the relevant data for our analysis.
 ```{r}
+#| message: false
+#| warning: false
 library(tidyverse)
 library(ggrepel)
-restaurant<-read_csv("/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv")
+restaurant<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/DOHMH_New_York_City_Restaurant_Inspection_Results_20241210.csv")
 restaurant <- restaurant |> 
   mutate(`INSPECTION DATE` = as.Date(`INSPECTION DATE`, format = "%m/%d/%Y")) |>
   filter(format(`INSPECTION DATE`, "%Y") != "1900")
 
 glimpse(restaurant)
 ```
+## Grade Distribution
+```{r}
+restaurant |> summarise(across(everything(), ~ sum(is.na(.))))
+
+restaurant_clean <- restaurant |>
+  drop_na(DBA, `INSPECTION DATE`, GRADE)
+
+grade_distribution <- restaurant_clean |>
+  count(GRADE, sort = TRUE)
+
+# Display the grade distribution
+grade_distribution
+
+# Visualize the grade distribution
+restaurant_clean |>
+  ggplot(aes(x = GRADE)) +
+  geom_bar() +
+  labs(
+    title = "Distribution of Grades",
+    x = "Grade",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+
 ## Favorite Cuisine Type
 ```{r}
+#| message: false
+#| warning: false
 library(ggplot2)
 cuisine_data <- restaurant |>
   filter(!is.na(`CUISINE DESCRIPTION`)) |>
@@ -28,6 +57,8 @@ print(cuisine_data$Cuisine)
 ```
 We can see that American, Chinese, and Latin American food are the top three popular cuisine, followed by Mexican, Caribbean, and Japanese cuisines. Then we want to know the average weighted score of these cuisine types.
 ```{r}
+#| message: false
+#| warning: false
 top_15_cuisines <- c("Other", "American", "Chinese", "Coffee/Tea", "Pizza", 
                      "Latin American", "Mexican", "Bakery Products/Desserts", 
                      "Caribbean", "Japanese", "Italian", "Spanish", 
@@ -56,6 +87,8 @@ We observe that Caribbean, Chinese, Spanish, and Asian/Asian Fusion cuisines ran
 
 Use box plot to show information:
 ```{r}
+#| message: false
+#| warning: false
 cutoff <- data.frame(yintercept = 14, cutoff = factor(14))
 
 restaurant_top_15 <- restaurant |>
@@ -82,6 +115,8 @@ ggplot(restaurant |> filter(`CUISINE DESCRIPTION` %in% restaurant_top_15$`CUISIN
 ## District Comparison
 Next, we want to know the inspection result of different district in New York in the past ten years.
 ```{r}
+#| message: false
+#| warning: false
 library(dplyr)
 library(ggplot2)
 library(lubridate)
@@ -110,11 +145,21 @@ ggplot(avg_score_by_boro_year, aes(x = factor(year), y = avg_score, fill = BORO)
   theme_minimal() +
   theme(legend.position = "top")
 ```
+```{r}
+
+# Save the processed data as CSV for D3
+#write_csv(avg_score_by_boro_year, "avg_score_by_boro_year.csv")
+
+#library(jsonlite)
+#toJSON(avg_score_by_boro_year)
+```
 Over the past five years, Brooklyn and Queens have consistently ranked as the top two boroughs, while Staten Island has consistently had the lowest scores. Manhattan, positioned in the middle, shows relatively stable performance. A particularly interesting trend is the steady increase in Manhattan’s average score over the past decade. In fact, all boroughs have seen an improvement in their scores over this period.
 
 ## Fast Food Chain Analysis Data
 ```{r}
-fast_food<-read_csv("/Users/zhiyizhang/Downloads/fast_food_chains_foot_traffic.csv")
+#| message: false
+#| warning: false
+fast_food<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/fast_food_chains_foot_traffic.csv")
 colnames(fast_food)
 fast_food |>
   ggplot(aes(x = reorder(Chain, USLocations), y = USLocations)) +
@@ -129,6 +174,8 @@ fast_food |>
 ```
 Show the relationship between the number of US locations and global revenue:
 ```{r}
+#| message: false
+#| warning: false
 fast_food |>
   ggplot(aes(x = USLocations, y = `2023 Global Revenue (Billion USD)`, label = Chain)) +
   geom_point(aes(color = `Customer Satisfaction (%)`, size = `2023 Global Revenue (Billion USD)`)) + # Add size and color mapping
@@ -146,7 +193,9 @@ fast_food |>
 ```
 ## Customer Satisfaction Data
 ```{r}
-customer_satisfaction<-read_csv("/Users/zhiyizhang/Downloads/customer_satisfation_2023_2024.csv")
+#| message: false
+#| warning: false
+customer_satisfaction<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/customer_satisfation_2023_2024.csv")
 colnames(customer_satisfaction)
 customer_satisfaction <- customer_satisfaction |>
   mutate(across(`2023`:`2024`, as.numeric))
