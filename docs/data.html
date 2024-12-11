@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.555">
+<meta name="generator" content="quarto-1.5.57">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>EDAV_final_group29 - 2&nbsp; Data</title>
+<title>2&nbsp; Data – EDAV_final_group29</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,7 +33,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -112,13 +112,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Data</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -189,12 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#fast-food-chain-analysis-data" id="toc-fast-food-chain-analysis-data" class="nav-link" data-scroll-target="#fast-food-chain-analysis-data"><span class="header-section-number">2.1.2</span> Fast Food Chain Analysis Data</a></li>
   <li><a href="#customer-satisfaction-data" id="toc-customer-satisfaction-data" class="nav-link" data-scroll-target="#customer-satisfaction-data"><span class="header-section-number">2.1.3</span> Customer Satisfaction Data</a></li>
   </ul></li>
-  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a>
-  <ul class="collapse">
-  <li><a href="#restaurant-inspection-data-1" id="toc-restaurant-inspection-data-1" class="nav-link" data-scroll-target="#restaurant-inspection-data-1"><span class="header-section-number">2.2.1</span> Restaurant Inspection Data</a></li>
-  <li><a href="#fast-food-chain-analysis-data-1" id="toc-fast-food-chain-analysis-data-1" class="nav-link" data-scroll-target="#fast-food-chain-analysis-data-1"><span class="header-section-number">2.2.2</span> Fast Food Chain Analysis Data</a></li>
-  <li><a href="#customer-satisfaction-data-1" id="toc-customer-satisfaction-data-1" class="nav-link" data-scroll-target="#customer-satisfaction-data-1"><span class="header-section-number">2.2.3</span> Customer Satisfaction Data</a></li>
-  </ul></li>
+  <li><a href="#missing-value-analysis" id="toc-missing-value-analysis" class="nav-link" data-scroll-target="#missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://zhiyi-z2233.github.io/EDAV_final_group29/edit/main/data.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://zhiyi-z2233.github.io/EDAV_final_group29/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -230,121 +225,86 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="fast-food-chain-analysis-data" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="fast-food-chain-analysis-data"><span class="header-section-number">2.1.2</span> Fast Food Chain Analysis Data</h3>
-<p>For the analysis of the most popular fast food chains, we use a dataset that provides nationwide data for the United States, not limited to New York. This dataset is sourced from <a href="https://passby.com/blog/top-fast-food-chains-foot-traffic/">Passby Blog’s Top Fast Food Chains Foot Traffic</a>, offering insights into consumer behavior and fast food chain popularity across the country.</p>
-<p>We build this dataset manually.</p>
+<p>For the analysis of the most popular fast food chains, we use a dataset that provides nationwide data for the United States, not limited to New York. This dataset is sourced from <a href="https://passby.com/blog/top-fast-food-chains-foot-traffic/">Passby Blog’s Top Fast Food Chains Foot Traffic</a>, offering insights into consumer behavior and fast food chain popularity across the country. We build this dataset manually.</p>
 </section>
 <section id="customer-satisfaction-data" class="level3" data-number="2.1.3">
 <h3 data-number="2.1.3" class="anchored" data-anchor-id="customer-satisfaction-data"><span class="header-section-number">2.1.3</span> Customer Satisfaction Data</h3>
-<p>To explore customer satisfaction, we use data from the <a href="https://theacsi.org/industries/restaurant/fast-food-restaurants/">American Customer Satisfaction Index (ACSI)</a>. This dataset evaluates customer satisfaction levels across various restaurant types and food delivery services, providing valuable insights into consumer preferences and trends.</p>
+<p>To explore customer satisfaction, we use data from the <a href="https://theacsi.org/industries/restaurant/food-delivery/">American Customer Satisfaction Index (ACSI)</a>. This dataset evaluates customer satisfaction levels across various restaurant types and food delivery services, providing valuable insights into consumer preferences and trends.</p>
 <p>We build this dataset manually.</p>
 </section>
 </section>
 <section id="missing-value-analysis" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="missing-value-analysis"><span class="header-section-number">2.2</span> Missing value analysis</h2>
-<section id="restaurant-inspection-data-1" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="restaurant-inspection-data-1"><span class="header-section-number">2.2.1</span> Restaurant Inspection Data</h3>
 <p>The dataset processing steps include the following: 1. Removing records with missing values in key features, such as restaurant names, inspection dates, and grades. 2. Converting categorical variables into factors to facilitate visualization. 3. (Optional) Creating additional features to enhance the analysis.</p>
-<p>First, read the data:</p>
+<p>First, read the data.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>restaurant<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"~/Desktop/Columbia/EDAV/EDAV Final Project/DOHMH_New_York_City_Restaurant_Inspection_Results_20241210.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.1.4     ✔ readr     2.1.5
-✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
-✔ lubridate 1.9.3     ✔ tidyr     1.3.1
-✔ purrr     1.0.2     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggrepel)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>restaurant<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
-e.g.:
-  dat &lt;- vroom(...)
-  problems(dat)</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 258714 Columns: 27
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (17): DBA, BORO, BUILDING, STREET, CUISINE DESCRIPTION, INSPECTION DATE,...
-dbl  (9): CAMIS, ZIPCODE, PHONE, SCORE, Latitude, Longitude, Community Board...
-lgl  (1): Location Point1
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-</div>
-<p>Get a general understanding of the data:</p>
+<p>Get a general understanding of the data.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>Rows: 258,714
+<pre><code>Rows: 263,821
 Columns: 27
-$ CAMIS                   &lt;dbl&gt; 50159534, 50096994, 50160319, 50146205, 416122…
-$ DBA                     &lt;chr&gt; "EL CALDERO RESTAURANT &amp; SPORT BAR", "JONGRO B…
-$ BORO                    &lt;chr&gt; "Bronx", "Queens", "Queens", "Manhattan", "Que…
-$ BUILDING                &lt;chr&gt; "1267", "15702", "9607", "550", "88-18/20", "3…
-$ STREET                  &lt;chr&gt; "JEROME AVENUE", "NORTHERN BLVD", "METROPOLITA…
-$ ZIPCODE                 &lt;dbl&gt; 10452, 11354, 11375, 10014, 11421, 10011, 1001…
-$ PHONE                   &lt;dbl&gt; 9178541366, 7183535101, 3474692945, 7043285184…
-$ `CUISINE DESCRIPTION`   &lt;chr&gt; NA, NA, NA, NA, "Mediterranean", NA, "American…
-$ `INSPECTION DATE`       &lt;chr&gt; "01/01/1900", "01/01/1900", "01/01/1900", "01/…
-$ ACTION                  &lt;chr&gt; NA, NA, NA, NA, "Violations were cited in the …
-$ `VIOLATION CODE`        &lt;chr&gt; NA, NA, NA, NA, "15-21", NA, "02B", NA, NA, NA…
-$ `VIOLATION DESCRIPTION` &lt;chr&gt; NA, NA, NA, NA, "Flavored tobacco products sol…
+$ CAMIS                   &lt;dbl&gt; 50159940, 50144187, 50156071, 50146315, 501600…
+$ DBA                     &lt;chr&gt; "BIG O CAFE", "LA BARRA", "BAR GIACOSA CORP", …
+$ BORO                    &lt;chr&gt; "Manhattan", "Manhattan", "Manhattan", "Brookl…
+$ BUILDING                &lt;chr&gt; "102", "501", "268", "1116", "3119", "617", "3…
+$ STREET                  &lt;chr&gt; "RIVERS EDGE ROAD", "WEST   30 STREET", "6 AVE…
+$ ZIPCODE                 &lt;dbl&gt; 10035, 10001, 10014, 11216, 11101, 11222, 1003…
+$ PHONE                   &lt;chr&gt; "9148824277", "6464951242", "2129823300", "347…
+$ `CUISINE DESCRIPTION`   &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Other", NA, NA, NA, N…
+$ `INSPECTION DATE`       &lt;chr&gt; "1/1/00", "1/1/00", "1/1/00", "1/1/00", "1/1/0…
+$ ACTION                  &lt;chr&gt; NA, NA, NA, NA, NA, NA, "No violations were re…
+$ `VIOLATION CODE`        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ `VIOLATION DESCRIPTION` &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
 $ `CRITICAL FLAG`         &lt;chr&gt; "Not Applicable", "Not Applicable", "Not Appli…
-$ SCORE                   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, 34, NA, NA, NA, NA, NA…
-$ GRADE                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, "C", NA, NA, NA, NA, N…
-$ `GRADE DATE`            &lt;chr&gt; NA, NA, NA, NA, NA, NA, "08/30/2024", NA, NA, …
-$ `RECORD DATE`           &lt;chr&gt; "11/19/2024", "11/19/2024", "11/19/2024", "11/…
-$ `INSPECTION TYPE`       &lt;chr&gt; NA, NA, NA, NA, "Smoke-Free Air Act / Initial …
-$ Latitude                &lt;dbl&gt; 40.83735, 40.76373, 40.71132, 40.72815, NA, 40…
-$ Longitude               &lt;dbl&gt; -73.92048, -73.80809, -73.85631, -74.00952, NA…
-$ `Community Board`       &lt;dbl&gt; 204, 407, 406, 102, NA, 105, 104, 101, 402, 20…
-$ `Council District`      &lt;chr&gt; "16", "20", "29", "03", NA, "02", "03", "01", …
-$ `Census Tract`          &lt;chr&gt; "021900", "117100", "070700", "003700", NA, "0…
-$ BIN                     &lt;dbl&gt; 2008279, 4119352, 4075972, 1010356, NA, 108061…
-$ BBL                     &lt;dbl&gt; 2028550025, 4052760019, 4031920001, 1005967502…
-$ NTA                     &lt;chr&gt; "BX26", "QN51", "QN17", "MN24", NA, "MN13", "M…
+$ SCORE                   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ GRADE                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ `GRADE DATE`            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…
+$ `RECORD DATE`           &lt;chr&gt; "12/10/24", "12/10/24", "12/10/24", "12/10/24"…
+$ `INSPECTION TYPE`       &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Smoke-Free Air Act / …
+$ Latitude                &lt;dbl&gt; 40.78958, 40.75213, 40.72932, 40.68639, 40.754…
+$ Longitude               &lt;dbl&gt; -73.92997, -74.00115, -74.00236, -73.95453, -7…
+$ `Community Board`       &lt;dbl&gt; 111, 104, 102, 303, 401, 301, 112, 301, 101, 3…
+$ `Council District`      &lt;chr&gt; "08", "03", "03", "36", "26", "33", "10", "34"…
+$ `Census Tract`          &lt;chr&gt; "024000", "009900", "006500", "022900", "00510…
+$ BIN                     &lt;dbl&gt; 1085876, 1089323, 1008297, 3056579, 4007883, 3…
+$ BBL                     &lt;dbl&gt; 1018190010, 1007020010, 1005260016, 3019740025…
+$ NTA                     &lt;chr&gt; "MN99", "MN13", "MN23", "BK69", "QN68", "BK76"…
 $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>     CAMIS              DBA                BORO             BUILDING        
- Min.   :30075445   Length:258714      Length:258714      Length:258714     
- 1st Qu.:41692608   Class :character   Class :character   Class :character  
- Median :50075750   Mode  :character   Mode  :character   Mode  :character  
- Mean   :47729105                                                           
- 3rd Qu.:50115166                                                           
- Max.   :50162077                                                           
+ Min.   :30075445   Length:263821      Length:263821      Length:263821     
+ 1st Qu.:41695981   Class :character   Class :character   Class :character  
+ Median :50076302   Mode  :character   Mode  :character   Mode  :character  
+ Mean   :47740088                                                           
+ 3rd Qu.:50115707                                                           
+ Max.   :50162965                                                           
                                                                             
-    STREET             ZIPCODE          PHONE           CUISINE DESCRIPTION
- Length:258714      Min.   : 8512   Min.   :0.000e+00   Length:258714      
- Class :character   1st Qu.:10023   1st Qu.:3.474e+09   Class :character   
- Mode  :character   Median :11101   Median :7.183e+09   Mode  :character   
-                    Mean   :10709   Mean   :5.860e+09                      
-                    3rd Qu.:11231   3rd Qu.:7.188e+09                      
-                    Max.   :14057   Max.   :7.189e+10                      
-                    NA's   :2662    NA's   :288                            
+    STREET             ZIPCODE         PHONE           CUISINE DESCRIPTION
+ Length:263821      Min.   : 8512   Length:263821      Length:263821      
+ Class :character   1st Qu.:10023   Class :character   Class :character   
+ Mode  :character   Median :11101   Mode  :character   Mode  :character   
+                    Mean   :10708                                         
+                    3rd Qu.:11231                                         
+                    Max.   :14057                                         
+                    NA's   :2697                                          
  INSPECTION DATE       ACTION          VIOLATION CODE     VIOLATION DESCRIPTION
- Length:258714      Length:258714      Length:258714      Length:258714        
+ Length:263821      Length:263821      Length:263821      Length:263821        
  Class :character   Class :character   Class :character   Class :character     
  Mode  :character   Mode  :character   Mode  :character   Mode  :character     
                                                                                
@@ -352,41 +312,41 @@ $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
                                                                                
                                                                                
  CRITICAL FLAG          SCORE           GRADE            GRADE DATE       
- Length:258714      Min.   :  0.00   Length:258714      Length:258714     
+ Length:263821      Min.   :  0.00   Length:263821      Length:263821     
  Class :character   1st Qu.: 12.00   Class :character   Class :character  
  Mode  :character   Median : 20.00   Mode  :character   Mode  :character  
-                    Mean   : 24.08                                        
+                    Mean   : 24.09                                        
                     3rd Qu.: 32.00                                        
                     Max.   :168.00                                        
-                    NA's   :12747                                         
+                    NA's   :13510                                         
  RECORD DATE        INSPECTION TYPE       Latitude       Longitude     
- Length:258714      Length:258714      Min.   : 0.00   Min.   :-74.25  
+ Length:263821      Length:263821      Min.   : 0.00   Min.   :-74.25  
  Class :character   Class :character   1st Qu.:40.68   1st Qu.:-73.99  
  Mode  :character   Mode  :character   Median :40.73   Median :-73.96  
-                                       Mean   :40.31   Mean   :-73.18  
+                                       Mean   :40.31   Mean   :-73.19  
                                        3rd Qu.:40.76   3rd Qu.:-73.90  
                                        Max.   :40.91   Max.   :  0.00  
-                                       NA's   :353     NA's   :353     
+                                       NA's   :366     NA's   :366     
  Community Board Council District   Census Tract            BIN         
- Min.   :101     Length:258714      Length:258714      Min.   :1000000  
- 1st Qu.:106     Class :character   Class :character   1st Qu.:1051720  
- Median :302     Mode  :character   Mode  :character   Median :3022098  
- Mean   :255                                           Mean   :2582382  
- 3rd Qu.:401                                           3rd Qu.:4007882  
- Max.   :595                                           Max.   :5799501  
- NA's   :3297                                          NA's   :4610     
+ Min.   :101.0   Length:263821      Length:263821      Min.   :1000000  
+ 1st Qu.:106.0   Class :character   Class :character   1st Qu.:1051612  
+ Median :302.0   Mode  :character   Mode  :character   Median :3021815  
+ Mean   :254.8                                         Mean   :2580627  
+ 3rd Qu.:401.0                                         3rd Qu.:4007684  
+ Max.   :595.0                                         Max.   :5799501  
+ NA's   :3345                                          NA's   :4681     
       BBL                NTA            Location Point1
- Min.   :1.000e+00   Length:258714      Mode:logical   
- 1st Qu.:1.011e+09   Class :character   NA's:258714    
+ Min.   :1.000e+00   Length:263821      Mode:logical   
+ 1st Qu.:1.011e+09   Class :character   NA's:263821    
  Median :3.008e+09   Mode  :character                  
- Mean   :2.476e+09                                     
+ Mean   :2.474e+09                                     
  3rd Qu.:4.005e+09                                     
  Max.   :5.270e+09                                     
- NA's   :638                                           </code></pre>
+ NA's   :651                                           </code></pre>
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "CAMIS"                 "DBA"                   "BORO"                 
@@ -400,229 +360,9 @@ $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 [25] "BBL"                   "NTA"                   "Location Point1"      </code></pre>
 </div>
 </div>
-<p>Check missing data, and remove key feature missing including restaurant names, inspection date, and grade.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>restaurant <span class="sc">|&gt;</span> <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 27
-  CAMIS   DBA  BORO BUILDING STREET ZIPCODE PHONE `CUISINE DESCRIPTION`
-  &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;  &lt;int&gt;   &lt;int&gt; &lt;int&gt;                 &lt;int&gt;
-1     0   962     0      366      0    2662   288                  2838
-# ℹ 19 more variables: `INSPECTION DATE` &lt;int&gt;, ACTION &lt;int&gt;,
-#   `VIOLATION CODE` &lt;int&gt;, `VIOLATION DESCRIPTION` &lt;int&gt;,
-#   `CRITICAL FLAG` &lt;int&gt;, SCORE &lt;int&gt;, GRADE &lt;int&gt;, `GRADE DATE` &lt;int&gt;,
-#   `RECORD DATE` &lt;int&gt;, `INSPECTION TYPE` &lt;int&gt;, Latitude &lt;int&gt;,
-#   Longitude &lt;int&gt;, `Community Board` &lt;int&gt;, `Council District` &lt;int&gt;,
-#   `Census Tract` &lt;int&gt;, BIN &lt;int&gt;, BBL &lt;int&gt;, NTA &lt;int&gt;,
-#   `Location Point1` &lt;int&gt;</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>restaurant_clean <span class="ot">&lt;-</span> restaurant <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(DBA, <span class="st">`</span><span class="at">INSPECTION DATE</span><span class="st">`</span>, GRADE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-<p>Detect grade distribution:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>grade_distribution <span class="ot">&lt;-</span> restaurant_clean <span class="sc">|&gt;</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(GRADE, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">#grade_distribution</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>restaurant_clean <span class="sc">|&gt;</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> GRADE)) <span class="sc">+</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribution of Grades"</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Grade"</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="fast-food-chain-analysis-data-1" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="fast-food-chain-analysis-data-1"><span class="header-section-number">2.2.2</span> Fast Food Chain Analysis Data</h3>
-<p>For this dataset, there is no need to address missing data. Instead, let’s focus on gaining a general understanding of the dataset.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fast_food<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"/Users/zhiyizhang/Downloads/fast_food_chains_foot_traffic.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 8 Columns: 11
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (3): Chain, GlobalLocations, 2023 U.S. Revenue (Billion USD)
-dbl (8): USLocations, 2023 Global Revenue (Billion USD), Customer Satisfacti...
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(fast_food)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] "Chain"                                         
- [2] "USLocations"                                   
- [3] "GlobalLocations"                               
- [4] "2023 U.S. Revenue (Billion USD)"               
- [5] "2023 Global Revenue (Billion USD)"             
- [6] "Customer Satisfaction (%)"                     
- [7] "Average Daily Visits per U.S. Store"           
- [8] "Total U.S. Visits in June 2024 (Million)"      
- [9] "Average Visits per Store in June 2024"         
-[10] "Change in Visits (June 2024 vs. May 2024) (%)" 
-[11] "Change in Visits (June 2024 vs. June 2023) (%)"</code></pre>
-</div>
-</div>
-<p>Show the number of different fast food locations:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>fast_food <span class="sc">|&gt;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">reorder</span>(Chain, USLocations), <span class="at">y =</span> USLocations)) <span class="sc">+</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Number of U.S. Locations of Fast Food Chains"</span>,</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Fast Food Chain"</span>,</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Number of U.S. Locations"</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Show the relationship between the number of US locations and global revenue:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>fast_food <span class="sc">|&gt;</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> USLocations, <span class="at">y =</span> <span class="st">`</span><span class="at">2023 Global Revenue (Billion USD)</span><span class="st">`</span>, <span class="at">label =</span> Chain)) <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> <span class="st">`</span><span class="at">Customer Satisfaction (%)</span><span class="st">`</span>, <span class="at">size =</span> <span class="st">`</span><span class="at">2023 Global Revenue (Billion USD)</span><span class="st">`</span>)) <span class="sc">+</span> <span class="co"># Add size and color mapping</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>() <span class="sc">+</span> <span class="co"># Add labels with text repelling</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span> <span class="co"># Log scale for the X-axis</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_log10</span>() <span class="sc">+</span> <span class="co"># Log scale for the Y-axis</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fast Food Chains: U.S. Locations vs. Global Revenue"</span>,</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Total Number of U.S. Locations (Log10 Scale)"</span>,</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"2023 Global Revenue (Billion USD, Log10 Scale)"</span>,</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Customer Satisfaction (%)"</span>,</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="st">"2023 Global Revenue (Billion USD)"</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="customer-satisfaction-data-1" class="level3" data-number="2.2.3">
-<h3 data-number="2.2.3" class="anchored" data-anchor-id="customer-satisfaction-data-1"><span class="header-section-number">2.2.3</span> Customer Satisfaction Data</h3>
-<p>For this dataset, there is also no need to address missing data. Instead, let’s focus on gaining a general understanding of the dataset.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>customer_satisfaction<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"/Users/zhiyizhang/Downloads/customer_satisfation_2023_2024.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 25 Columns: 4
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (3): Company, 2023, % CHANGE
-dbl (1): 2024
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(customer_satisfaction)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Company"  "2023"     "2024"     "% CHANGE"</code></pre>
-</div>
-</div>
-<p>Using line chart to show the satisfaction change of each company.</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>customer_satisfaction <span class="ot">&lt;-</span> customer_satisfaction <span class="sc">|&gt;</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="st">`</span><span class="at">2023</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2024</span><span class="st">`</span>, as.numeric))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: There was 1 warning in `mutate()`.
-ℹ In argument: `across(`2023`:`2024`, as.numeric)`.
-Caused by warning:
-! NAs introduced by coercion</code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>customer_satisfaction_long <span class="ot">&lt;-</span> customer_satisfaction <span class="sc">|&gt;</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">2023</span><span class="st">`</span>, <span class="st">`</span><span class="at">2024</span><span class="st">`</span>), <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Score"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">as.numeric</span>(Year))  <span class="co"># Convert Year to numeric</span></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>customer_satisfaction_long <span class="sc">|&gt;</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Score, <span class="at">group =</span> Company, <span class="at">color =</span> Company)) <span class="sc">+</span></span>
-<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">2023</span>, <span class="dv">2024</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"2023"</span>, <span class="st">"2024"</span>)) <span class="sc">+</span></span>
-<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Fast Food Company Trends: 2023 vs 2024"</span>,</span>
-<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Score"</span>,</span>
-<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Company"</span></span>
-<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
-<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
-<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
-ℹ Please use `linewidth` instead.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
-(`geom_line()`).</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
-(`geom_point()`).</code></pre>
-</div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="data_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<p>Check missing data. Remove key feature missing including restaurant names, inspection date, and grade.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -661,18 +401,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -704,7 +433,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -712,7 +463,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
