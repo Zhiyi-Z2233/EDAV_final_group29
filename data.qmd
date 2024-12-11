@@ -12,13 +12,13 @@ For this project, we use three datasets that provide insights into different asp
 We utilize the [DOHMH New York City Restaurant Inspection dataset](https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data) from the NYC OpenData library. This dataset includes details on all sustained or pending violation citations from full or special program inspections conducted within three years prior to the most recent inspection. The data covers restaurants and college cafeterias that are actively operating as of the RECORD DATE (the date the data was pulled).
 
 **Key points about this dataset**:
-	- This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data.
-	- Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation.
-	- Establishments are uniquely identified by their CAMIS (record ID) number.
-	- Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE.
-	- Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations.
-	- Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection.
-	- Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.
+- This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data.
+- Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation.
+- Establishments are uniquely identified by their CAMIS (record ID) number.
+- Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE.
+- Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations.
+- Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection.
+- Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.
 
 ### Fast Food Chain Analysis Data
 
@@ -37,9 +37,11 @@ The dataset processing steps include the following: 1. Removing records with mis
 
 First, read the data.
 ```{r}
+#| message: false
+#| warning: false
 library(tidyverse)
 library(ggrepel)
-restaurant<-read_csv("/Users/zhiyizhang/Downloads/DOHMH_New_York_City_Restaurant_Inspection_Results_20241120.csv")
+restaurant<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/DOHMH_New_York_City_Restaurant_Inspection_Results_20241210.csv")
 ```
 
 Get a general understanding of the data.
@@ -51,29 +53,5 @@ colnames(restaurant)
 
 Check missing data.
 Remove key feature missing including restaurant names, inspection date, and grade.
-```{r}
-restaurant |> summarise(across(everything(), ~ sum(is.na(.))))
 
-restaurant_clean <- restaurant |>
-  drop_na(DBA, `INSPECTION DATE`, GRADE)
-```
-
-```{r}
-grade_distribution <- restaurant_clean |>
-  count(GRADE, sort = TRUE)
-
-# Display the grade distribution
-grade_distribution
-
-# Visualize the grade distribution
-restaurant_clean |>
-  ggplot(aes(x = GRADE)) +
-  geom_bar() +
-  labs(
-    title = "Distribution of Grades",
-    x = "Grade",
-    y = "Count"
-  ) +
-  theme_minimal()
-```
 
