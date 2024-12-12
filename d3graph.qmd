@@ -1,5 +1,5 @@
 # Interactive graph
-Try explore the change of the scores across boroughs over the past 10 years!
+Try explore the change of the scores across boroughs over the past 10 years! Click on the dropdown box and select the year you're interested in.
 
 <style>
   * {
@@ -9,13 +9,16 @@ Try explore the change of the scores across boroughs over the past 10 years!
   
 </head>
 <body>
-  <h1>Scores by borough 2015-2024</h1>
-  <label for="yearSelector">Select Year:</label>
-  <select id="yearSelector"></select>
+  <h1>Scores by Borough</h1>
+  <div id="slider-container">
+    <svg id="slider" width="800" height="50"></svg>
+  </div>
+  <button id="play-button">Play Animation</button>
+  <div id="plot">
+    <svg width="800" height="600"></svg>
+  </div>
 
-<div id="plot">
-  <svg width="800" height="600"></svg>
-</div>
+We can see that Brooklyn started out with high score in 2015 but dropped significantly in 2016. All 5 boroughs improved during the past 2 years, which is very promising!
 
 <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
 <script src="myscript.js"></script>

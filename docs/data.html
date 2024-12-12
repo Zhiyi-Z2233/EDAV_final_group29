@@ -221,7 +221,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="restaurant-inspection-data" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="restaurant-inspection-data"><span class="header-section-number">2.1.1</span> Restaurant Inspection Data</h3>
 <p>We utilize the <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/43nn-pn8j/about_data">DOHMH New York City Restaurant Inspection dataset</a> from the NYC OpenData library. This dataset includes details on all sustained or pending violation citations from full or special program inspections conducted within three years prior to the most recent inspection. The data covers restaurants and college cafeterias that are actively operating as of the RECORD DATE (the date the data was pulled).</p>
-<p><strong>Key points about this dataset</strong>: - This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data. - Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation. - Establishments are uniquely identified by their CAMIS (record ID) number. - Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE. - Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations. - Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection. - Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.</p>
+<p><strong>Key points about this dataset</strong>: - This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data.</p>
+<ul>
+<li><p>Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation.</p></li>
+<li><p>Establishments are uniquely identified by their CAMIS (record ID) number.</p></li>
+<li><p>Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE.</p></li>
+<li><p>Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations.</p></li>
+<li><p>Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection.</p></li>
+<li><p>Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.</p></li>
+</ul>
 </section>
 <section id="fast-food-chain-analysis-data" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="fast-food-chain-analysis-data"><span class="header-section-number">2.1.2</span> Fast Food Chain Analysis Data</h3>
@@ -375,7 +383,8 @@ $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 </div>
 </div>
-<p>We can see from the graph that almost half of all the columns don’t have any missing value and another half have a very small percentage of them. Grade, Grade Date, and Location Point1 have the most missing values, especially Location Point1 which is literally an empty column. This might be because it is left for use to incorporate with interactive maps. More than half of the restaurants in this data are missing their Grade and Grade date data. This might be because the Grade, which depends on adjudication results, has not been issued to the establishment (the restaurants). In addition, since this dataset is compiled from several large administrative data systems, it contains some illogical values that could be a result of data entry or transfer errors, which would also lead to data missing. However, with more than 260,000 restaurants on the list, we think this percentage of missing values is acceptable.</p>
+<p>We can see from the graph that almost half of all the columns don’t have any missing value and another half have a very small percentage of them. Grade, Grade Date, and Location Point1 have the most missing values, especially Location Point1 which is literally an empty column. This might be because it is left for use to incorporate with interactive maps. For the purpose of this project we can safely remove this column. More than half of the restaurants in this data are missing their Grade and Grade Date data. This might be because the Grade, which depends on adjudication results, has not been issued to the establishment (the restaurants).</p>
+<p>In addition, since this dataset is compiled from several large administrative data systems, it contains some illogical values that could be a result of data entry or transfer errors, which would also lead to data missing. However, with more than 260,000 restaurants on the list, we think this percentage of missing values is acceptable.</p>
 
 
 </section>

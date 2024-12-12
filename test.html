@@ -1,4 +1,42 @@
-// Inline data
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Scores by Borough</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    #plot {
+      margin: 20px auto;
+      width: 800px;
+    }
+
+    #slider-container {
+      width: 800px;
+      margin: 20px auto;
+    }
+
+    button {
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scores by Borough</h1>
+  <div id="slider-container">
+    <svg id="slider" width="800" height="50"></svg>
+  </div>
+  <button id="play-button">Play Animation</button>
+  <div id="plot">
+    <svg width="800" height="600"></svg>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  <script>
+    // Inline data
     const data = [
       { year: 2015, boro: "Brooklyn", avg_score: 29 },
       { year: 2015, boro: "Manhattan", avg_score: 8.25 },
@@ -57,13 +95,13 @@
     const height = 600;
     const margin = { top: 40, right: 20, bottom: 50, left: 50 };
 
-    const svg = d3.select("div#plot svg");
+    const svg = d3.select("#plot svg");
     const x = d3.scaleBand().range([margin.left, width - margin.right]).padding(0.2);
     const y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
     const color = d3.scaleOrdinal(d3.schemeCategory10);
 
     const sliderWidth = 800;
-    const sliderHeight = 40;
+    const sliderHeight =40;
     const sliderMargin = { left: 50, right: 50 };
 
     const sliderScale = d3.scaleLinear()
@@ -71,7 +109,7 @@
       .range([sliderMargin.left, sliderWidth - sliderMargin.right])
       .clamp(true);
 
-    const slider = d3.select("div#slider-container svg#slider")
+    const slider = d3.select("#slider")
       .append("g")
       .attr("transform", `translate(0,${sliderHeight / 2})`);
 
@@ -144,3 +182,6 @@
     }
 
     drawChart(years[0]);
+  </script>
+</body>
+</html>
