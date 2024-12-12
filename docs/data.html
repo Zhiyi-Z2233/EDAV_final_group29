@@ -293,69 +293,8 @@ $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 </div>
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     CAMIS              DBA                BORO             BUILDING        
- Min.   :30075445   Length:263821      Length:263821      Length:263821     
- 1st Qu.:41695981   Class :character   Class :character   Class :character  
- Median :50076302   Mode  :character   Mode  :character   Mode  :character  
- Mean   :47740088                                                           
- 3rd Qu.:50115707                                                           
- Max.   :50162965                                                           
-                                                                            
-    STREET             ZIPCODE         PHONE           CUISINE DESCRIPTION
- Length:263821      Min.   : 8512   Length:263821      Length:263821      
- Class :character   1st Qu.:10023   Class :character   Class :character   
- Mode  :character   Median :11101   Mode  :character   Mode  :character   
-                    Mean   :10708                                         
-                    3rd Qu.:11231                                         
-                    Max.   :14057                                         
-                    NA's   :2697                                          
- INSPECTION DATE       ACTION          VIOLATION CODE     VIOLATION DESCRIPTION
- Length:263821      Length:263821      Length:263821      Length:263821        
- Class :character   Class :character   Class :character   Class :character     
- Mode  :character   Mode  :character   Mode  :character   Mode  :character     
-                                                                               
-                                                                               
-                                                                               
-                                                                               
- CRITICAL FLAG          SCORE           GRADE            GRADE DATE       
- Length:263821      Min.   :  0.00   Length:263821      Length:263821     
- Class :character   1st Qu.: 12.00   Class :character   Class :character  
- Mode  :character   Median : 20.00   Mode  :character   Mode  :character  
-                    Mean   : 24.09                                        
-                    3rd Qu.: 32.00                                        
-                    Max.   :168.00                                        
-                    NA's   :13510                                         
- RECORD DATE        INSPECTION TYPE       Latitude       Longitude     
- Length:263821      Length:263821      Min.   : 0.00   Min.   :-74.25  
- Class :character   Class :character   1st Qu.:40.68   1st Qu.:-73.99  
- Mode  :character   Mode  :character   Median :40.73   Median :-73.96  
-                                       Mean   :40.31   Mean   :-73.19  
-                                       3rd Qu.:40.76   3rd Qu.:-73.90  
-                                       Max.   :40.91   Max.   :  0.00  
-                                       NA's   :366     NA's   :366     
- Community Board Council District   Census Tract            BIN         
- Min.   :101.0   Length:263821      Length:263821      Min.   :1000000  
- 1st Qu.:106.0   Class :character   Class :character   1st Qu.:1051612  
- Median :302.0   Mode  :character   Mode  :character   Median :3021815  
- Mean   :254.8                                         Mean   :2580627  
- 3rd Qu.:401.0                                         3rd Qu.:4007684  
- Max.   :595.0                                         Max.   :5799501  
- NA's   :3345                                          NA's   :4681     
-      BBL                NTA            Location Point1
- Min.   :1.000e+00   Length:263821      Mode:logical   
- 1st Qu.:1.011e+09   Class :character   NA's:263821    
- Median :3.008e+09   Mode  :character                  
- Mean   :2.474e+09                                     
- 3rd Qu.:4.005e+09                                     
- Max.   :5.270e+09                                     
- NA's   :651                                           </code></pre>
-</div>
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#summary(restaurant)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] "CAMIS"                 "DBA"                   "BORO"                 
@@ -373,7 +312,7 @@ $ `Location Point1`       &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_missing</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_missing</span>(restaurant)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
