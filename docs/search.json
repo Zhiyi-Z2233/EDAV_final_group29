@@ -94,7 +94,7 @@
     "href": "d3graph.html",
     "title": "4  Interactive graph",
     "section": "",
-    "text": "Try explore the change of the scores across boroughs over the past 10 years! Click on the dropdown box and select the year you’re interested in.\n\n\n\n\nScores by Borough\n\n\n&lt;svg id=\"slider\" width=\"800\" height=\"50\"&gt;&lt;/svg&gt;\n\n\nPlay Animation\n\n\n&lt;svg width=\"800\" height=\"600\"&gt;&lt;/svg&gt;\n\nWe can see that Brooklyn started out with high score in 2015 but dropped significantly in 2016. All 5 boroughs improved during the past 2 years, which is very promising!",
+    "text": "Try explore the change of the scores across boroughs over the past 10 years! Click on the dropdown box and select the year you’re interested in.\n\n\n\n\nScores by Borough\n\n\n\n\n\nPlay Animation\n\n\n\n\nWe can see that Brooklyn started out with high score in 2015 but dropped significantly in 2016. All 5 boroughs improved during the past 2 years, which is very promising!",
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Interactive graph</span>"
     ]
