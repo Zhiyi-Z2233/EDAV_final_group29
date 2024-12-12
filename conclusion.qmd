@@ -1,2 +1,9 @@
 # Conclusion
 
+There are so many ways we can play with the abundant data on restaurants! Through insightful exploratory data analysis and visualizations over the three data sets, we gained a deeper understanding of the thriving cuisine culture in New York City. From the Grade Distribution we learned that most of the restaurants maintain a good safety standard. The management of the restaurants community also gives us a glimpse on the living standards in different boroughs. In future research we could find life quality data across boroughs and connect it with the restaurants data to confirm the correlation.
+
+From Favorite Cuisine Type, we can see that NYC offers abundant choices of food. We also notice that some boroughs do better in a certain type of cuisine, such as Latin American food in Queens. These Cuisine type data analysis also gives implications on formation pattern of different cultural communities in NYC. Forming such a correlation could be a future topic.
+
+Lastly, we confirmed the significant popularity of Starbucks among American people's heart. Although having fewer number of locations than Subway, it makes the highest revenue with a decent customer satisfaction level (Chick-fil-a ranks the highest...). Unfortunately we didn't get too much of a time elapse data on this one which could be a part of future exploration.
+
+Although with limitations on the organization and format of the presentation, we gained valuable experience with remote collaboration on GitHub and trying out an interactive way of presenting the data. We also learned a lot about how helpful ChatGPT can be with code writing an improving efficiency. We will continue to incorporate technology into our future research. 
