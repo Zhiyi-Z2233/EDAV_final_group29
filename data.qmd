@@ -13,11 +13,17 @@ We utilize the [DOHMH New York City Restaurant Inspection dataset](https://data.
 
 **Key points about this dataset**:
 - This is a huge data set containing about 260,000 observations of 27 variables. The data is updated daily according to the description of the data.
+
 - Each violation record is associated with an inspection, and establishments with multiple violations will have repeated fields for each violation.
+
 - Establishments are uniquely identified by their CAMIS (record ID) number.
+
 - Restaurants that have started operations or gone out of business within the dataset period are included only if they were active on the RECORD DATE.
+
 - Records also include restaurants applying for permits but not yet inspected and inspections resulting in no violations.
+
 - Restaurants with an inspection date of “1/1/1900” are new establishments awaiting inspection.
+
 - Restaurants with no violations are represented by a single row coded as having no violations in the ACTION field.
 
 ### Fast Food Chain Analysis Data
@@ -34,13 +40,13 @@ We build this dataset manually.
 ## Missing value analysis
 
 The dataset processing steps include the following: 1. Removing records with missing values in key features, such as restaurant names, inspection dates, and grades. 2. Converting categorical variables into factors to facilitate visualization. 3. (Optional) Creating additional features to enhance the analysis.
-
-First, read the data.
 ```{r}
 #| message: false
 #| warning: false
 library(tidyverse)
 library(ggrepel)
+library(DataExplorer)
+#library(redav)
 restaurant<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/DOHMH_New_York_City_Restaurant_Inspection_Results_20241210.csv")
 ```
 
@@ -52,6 +58,9 @@ colnames(restaurant)
 ```
 
 Check missing data.
-Remove key feature missing including restaurant names, inspection date, and grade.
+```{r}
+plot_missing(restaurant)
+```
+We can see from the graph that almost half of all the columns don't have any missing value and another half have a very small percentage of them. Grade, Grade Date, and Location Point1 have the most missing values, especially Location Point1 which is literally an empty column. This might be because it is left for use to incorporate with interactive maps. For the purpose of this project we can safely remove this column. More than half of the restaurants in this data are missing their Grade and Grade Date data. This might be because the Grade, which depends on adjudication results, has not been issued to the establishment (the restaurants). 
 
-
+In addition, since this dataset is compiled from several large administrative data systems, it contains some illogical values that could be a result of data entry or transfer errors, which would also lead to data missing. However, with more than 260,000 restaurants on the list, we think this percentage of missing values is acceptable. 

@@ -80,7 +80,7 @@ const data = [
       const yearData = data.filter(d => d.year === selectedYear);
 
       x.domain(yearData.map(d => d.boro));
-      y.domain([0, d3.max(yearData, d => d.avg_score)]);
+      y.domain([0, 30]);
 
       // Clear existing elements
       svg.selectAll("*").remove();

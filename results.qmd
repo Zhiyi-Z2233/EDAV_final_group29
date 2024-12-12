@@ -37,6 +37,8 @@ restaurant_clean |>
   theme_minimal()
 ```
 
+
+
 ## Favorite Cuisine Type
 ```{r}
 #| message: false
