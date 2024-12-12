@@ -9,11 +9,12 @@ restaurant<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/DOHMH_New_York_
 restaurant <- restaurant |> 
   mutate(`INSPECTION DATE` = as.Date(`INSPECTION DATE`, format = "%m/%d/%Y")) |>
   filter(format(`INSPECTION DATE`, "%Y") != "1900")
-
-glimpse(restaurant)
 ```
 ## Grade Distribution
+Let's first take a look at how the restaurants are doing in terms of grade from inspection.
 ```{r}
+#| message: false
+#| warning: false
 restaurant |> summarise(across(everything(), ~ sum(is.na(.))))
 
 restaurant_clean <- restaurant |>
@@ -23,21 +24,77 @@ grade_distribution <- restaurant_clean |>
   count(GRADE, sort = TRUE)
 
 # Display the grade distribution
-grade_distribution
+#grade_distribution
 
 # Visualize the grade distribution
 restaurant_clean |>
-  ggplot(aes(x = GRADE)) +
+  ggplot(aes(x = GRADE, fill= GRADE)) +
   geom_bar() +
   labs(
     title = "Distribution of Grades",
     x = "Grade",
     y = "Count"
   ) +
-  theme_minimal()
+  theme_minimal()+
+  scale_x_discrete(limits = c("A","B","C","N","Z","P"))
+```
+• N= Not Yet Graded
+• A = Grade A
+• B = Grade B
+• C = Grade C
+• Z = Grade Pending
+• P = Grade Pending issued on re-opening following an initial inspection that resulted in a closure
+
+We can see that most of the restaurants are Grade A, which is good to know because otherwise the residents in NYC would not feel safe eating outside. Let's then take a look at how the grade distribution is like for each borough.
+
+```{r}
+#ggplot(percent_data, aes(x = BORO, y = percentage, fill = GRADE)) +
+ # geom_bar(stat = "identity") +
+  #labs(
+   #  title = "Percentage of Grades across Boroughs",
+    #x = "Boroughs",
+    #y = "Percentage"
+# ) +
+ # theme_minimal() +
+  #scale_y_continuous(labels = scales::percent)
 ```
 
+```{r}
+restaurant_clean |>
+  ggplot(aes(x = GRADE, fill= GRADE)) +
+  geom_bar() +
+  facet_wrap(~BORO) +
+  labs(
+    title = "Distribution of Grades",
+    x = "Grade",
+    y = "Count"
+  ) +
+  theme_minimal()+
+  scale_x_discrete(limits = c("A","B","C","N","Z","P"))
+```
+We can see that Manhattan, with the highest number of Grade A restaurants, is very diligent with keeping the hygiene level, at least in terms of food. Although it also has more Grade B's and C's, but the total number of restaurants from Manhattan is also the highest so we need to take this into account and study the percentage of the grade distribution for each borough.
 
+```{r}
+percent_data <- restaurant_clean %>%
+  count(BORO, GRADE) %>%
+  group_by(BORO) %>%
+  mutate(percentage = n / sum(n) * 100)
+
+percent_data |>
+  ggplot(aes(x = BORO, y = n, fill= GRADE)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = paste0(round(percentage, 1), "%")), 
+            position = position_stack(vjust = 0.5), size = 3) +
+  labs(
+    title = "Distribution of restaurants across boroughs",
+    x = "Boroughs",
+    y = "Count"
+  ) +
+  theme_minimal()
+```
+Indeed, Manhattan as the busiest borough rank the top in terms of number restaurants, and Brooklyn and Queens come next. Surprisingly, with the lowest number of restaurants, Staten Island actually has the highest percentage of Grade A restaurants. Although the size of the Staten Island borough is almost the same as Brooklyn, but it is way less crowded with better management. 
+
+On the other hand, Bronx, also with a smaller number of restaurants, doesn't do as well according to its relatively low percentage of Grade A restaurants. It also has the highest percentage of Grade B restaurants, implying that the hygiene level of the borough is not as well managed as the other ones.
 
 ## Favorite Cuisine Type
 ```{r}
@@ -114,6 +171,33 @@ ggplot(restaurant |> filter(`CUISINE DESCRIPTION` %in% restaurant_top_15$`CUISIN
         legend.position = "none") +
   coord_flip()
 ```
+Now let's see how Grade A cuisines are distributed across boroughs for the top 5 cuisines:
+```{r}
+# Count Grade A cuisines by borough
+top_5_cuisines <- c( "American", "Chinese", "Pizza", 
+                     "Latin American", "Caribbean", "Japanese")
+
+cuisine_distribution <- restaurant_clean %>%
+  filter(`CUISINE DESCRIPTION` %in% top_5_cuisines, !is.na(SCORE)) |>
+  filter(GRADE == "A") |>
+  count(BORO, `CUISINE DESCRIPTION`) %>%
+  arrange(desc(n))  # Sort by count
+# Stacked bar chart of cuisines by borough
+ggplot(cuisine_distribution, aes(x = BORO, y = n, fill = `CUISINE DESCRIPTION`)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Distribution of Grade A Cuisines Across Boroughs",
+    x = "Boroughs",
+    y = "Count",
+    fill = "Cuisine"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  scale_fill_brewer(palette = "Set3")
+```
+From this graph we can see that if you want Grade A American or Japanese food, you should definitely go for Manhattan restaurants. But if you are eyeing for Chinese or Caribbean food, you can check out restaurants in Brooklyn or Queens. Latin American cuisine thrives in Queens in particular, which is expected because there are a lot of Latin American people living in Queens. Pizza is just fine wherever you go.
+
+
 ## District Comparison
 Next, we want to know the inspection result of different district in New York in the past ten years.
 ```{r}
