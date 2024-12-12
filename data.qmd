@@ -53,7 +53,7 @@ restaurant<-read_csv("~/Desktop/Columbia/EDAV/EDAV Final Project/DOHMH_New_York_
 Get a general understanding of the data.
 ```{r}
 glimpse(restaurant)
-summary(restaurant)
+#summary(restaurant)
 colnames(restaurant)
 ```
 
