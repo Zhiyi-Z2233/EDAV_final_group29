@@ -71,7 +71,7 @@
       .range([sliderMargin.left, sliderWidth - sliderMargin.right])
       .clamp(true);
 
-    const slider = d3.select("div#slider-container svg#slider")
+    const slider = d3.select("#slider")
       .append("g")
       .attr("transform", `translate(0,${sliderHeight / 2})`);
 
